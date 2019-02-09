@@ -7,13 +7,7 @@ FSJS project 1 - A Random Quote Generator
 
 
 /*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-
-  Recommended: 
-    - Add at least one `year` and/or `citation` property to at least one 
-      quote object.
+declare and initialize quotes and put it into an array 
 ***/
 var quote1={ quote:"You have to do the best with what God gave you.", source:"Mrs. Gump", year:1994, citation:"Forrest Gump Movie"}
 var quote2={ quote:"Adapt what is useful, reject what is useless, and add what is specifically your own.", source:"Bruce Lee"}
@@ -30,34 +24,42 @@ var quotes=[quote1, quote2, quote3, quote4, quote5, quote6, quote7];
 
 
 /***
-  Create the `getRandomQuote` function to:
-   - generate a random number 
-   - use the random number to `return` a random quote object from the 
-     `quotes` array.
+  returns a random quote
 ***/
+
+function getRandomQuote(){
+  var randomNumber=Math.floor((Math.random()*6));
+  return quotes[randomNumber];
+}
+getRandomQuote();
 
 
 
 
 /***
-  Create the `printQuote` function to: 
-   - call the `getRandomQuote` function and assign it to a variable.
-   - use the properties of the quote object stored in the variable to 
-     create your HTML string.
-   - use conditionals to make sure the optional properties exist before 
-     they are added to the HTML string.
-   - set the `innerHTML` of the `quote-box` div to the HTML string. 
+  prints a random quote with quote and source and if available also the citation and year
 ***/
 
+function printQuote(){
+  var randomQuote =getRandomQuote();
+  document.querySelector(".quote").innerHTML=randomQuote.quote;
+  document.querySelector(".source").innerHTML=randomQuote.source;
+  
+  if(randomQuote.citation){
+    var span = document.createElement("span");
+    span.className="citation";
+    document.querySelector(".source").appendChild(span);
+    document.querySelector(".citation").innerHTML=randomQuote.citation;
+  }
+  if(randomQuote.year){
+    var span = document.createElement("span");
+    span.className="year";
+    document.querySelector(".source").appendChild(span);
+    document.querySelector(".year").innerHTML=randomQuote.year;
+  }
+}
 
 
-
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
