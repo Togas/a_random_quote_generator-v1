@@ -17,8 +17,9 @@ source:"André Gide"}
 var quote5={ quote:"Deadlines are lifelines.", source:"Beth Lapides"}
 var quote6={ quote:"Don't cry because it's over, smile because it happened.", source:"Dr. Seuss"}
 var quote7={ quote:"Be yourself; everyone else is already taken.", source:"Oscar Wilde"}
+var quote8={ quote:"You shouldn’t focus on why you can’t do something, which is what most people do. You should focus on why perhaps, you could be one of the exceptions", source:"Steve Case"}
 
-var quotes=[quote1, quote2, quote3, quote4, quote5, quote6, quote7];
+var quotes=[quote1, quote2, quote3, quote4, quote5, quote6, quote7, quote8];
 
 
 
@@ -28,7 +29,7 @@ var quotes=[quote1, quote2, quote3, quote4, quote5, quote6, quote7];
 ***/
 
 function getRandomQuote(){
-  var randomNumber=Math.floor((Math.random()*6));
+  var randomNumber=Math.floor((Math.random()*quotes.length));
   return quotes[randomNumber];
 }
 getRandomQuote();
